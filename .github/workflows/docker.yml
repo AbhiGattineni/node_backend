@@ -46,7 +46,7 @@ jobs:
 
       - name: Login to Docker Hub
         run: |
-          echo "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
+            echo "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
     
 
       - name: Pull image from docker hub
@@ -54,4 +54,4 @@ jobs:
       - name: Delete existing container
         run: docker rm -f nodebackend || true
       - name: Run container
-        run: docker run -d -p 5000:5000 --name nodebackend ${{ secrets.DOCKER_HUB_USERNAME }}/nodebackend:latest -e MONGO_ATLAS_URL=${{ secrets.MONGO_ATLAS_URL }}
+        run: docker run -d -p 5000:5000 --name nodebackend ${{ secrets.DOCKER_HUB_USERNAME }}/nodebackend:latest
