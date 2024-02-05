@@ -54,4 +54,4 @@ jobs:
       - name: Delete existing container
         run: docker rm -f nodebackend || true
       - name: Run container
-        run: docker run -d -p 5000:5000 --name nodebackend ${{ secrets.DOCKER_HUB_USERNAME }}/nodebackend:latest
+        run: docker run -d -p 5000:5000 --name nodebackend -e MONGO_ATLAS_URL -e PORT ${{ secrets.DOCKER_HUB_USERNAME }}/nodebackend:latest
