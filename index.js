@@ -25,7 +25,7 @@ const app = express();
 // // Example log statement
 // logger.info('This is an example log message.');
 
-
+console.log("process.env.MONGO_ATLAS_URL", process.env.MONGO_ATLAS_URL);
 mongoose.connect(process.env.MONGO_ATLAS_URL).then(() => console.log("connected")).catch((e) => console.log("issue", e)) // Add your connection string here
 
 app.use(express.json());
