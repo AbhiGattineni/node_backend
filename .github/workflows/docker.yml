@@ -33,6 +33,17 @@ jobs:
     runs-on: [aws-ec2]
     needs: build
     steps:
+      - name: Install Docker
+        run: |
+          if ! docker --version; then
+            sudo yum update -y
+            sudo amazon-linux-extras install docker
+            sudo service docker start
+            sudo usermod -a -G docker ec2-user
+          else
+            echo "Docker already installed"
+          fi
+
       - name: Pull image from docker hub
         run: docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/nodebackend:latest
       - name: Delete existing container
