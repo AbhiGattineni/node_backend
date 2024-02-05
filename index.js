@@ -15,7 +15,8 @@ const app = express();
 const logger = winston.createLogger({
     transports: [
         new winston.transports.MongoDB({
-            db: process.env.MONGO_ATLAS_URL, // Your MongoDB connection URL
+            uri: process.env.MONGO_ATLAS_URL, // Your MongoDB connection URL
+            db: 'test', // Specify the database name
             level: 'silly', // Set the log level as needed
         }),
     ],
