@@ -55,4 +55,4 @@ jobs:
         run: docker rm -f nodebackend || true
       - name: Run container
         run: |
-          docker run -e "MONGO_ATLAS_URL=mongodb+srv://AbhishekGattineni:V7GBJg9uM2tU_5c@cluster0.0diuqsy.mongodb.net/?retryWrites=true&w=majority" -d -p 5000:5000 --name nodebackend ${{ secrets.DOCKER_HUB_USERNAME }}/nodebackend:latest
+          docker run -e "MONGO_ATLAS_URL=${{secrets.MONGO_ATLAS_URL}}" -d -p 5000:5000 --name nodebackend ${{ secrets.DOCKER_HUB_USERNAME }}/nodebackend:latest
